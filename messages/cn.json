@@ -1,0 +1,16 @@
+{
+  "Page": {
+    "title": "MAOTEK - 轻松订购"
+  },
+  "HomePage": {
+    "title": "MAOTEK"
+  },
+  "Order": {
+    "title": "MAOTEK - CN"
+  },
+  "locales": {
+    "cn": "中文",
+    "en": "英语",
+    "nl": "荷兰语"
+  }
+}

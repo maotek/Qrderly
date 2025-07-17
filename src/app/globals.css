@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@plugin './hero.ts';
+
+@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+/* @custom-variant dark (&:is(.dark *)) */
+
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --bg-1: 215 215 215;
+  --bg-2: 245 245 245;
+  --bg-3: 255 255 255;
+  --heading-1: 0 0 0;
+  --heading-2: 0 0 0;
+  --heading-3: 0 0 0;
+}
+
+[data-theme='dark'] {
+  --bg-1: 24 35 46;
+  --bg-2: 55 67 78;
+  --bg-3: 0 0 0;
+  --heading-1: 255 255 255;
+  --heading-2: 255 255 255;
+  --heading-3: 255 255 255;
+}
+
+@layer utilities {
+  .bg-body-1 {
+    background-color: rgb(var(--bg-1));
+  }
+  .bg-body-2 {
+    background-color: rgb(var(--bg-2));
+  }
+  .bg-body-3 {
+    background-color: rgb(var(--bg-3));
+  }
+  .text-heading-1 {
+    color: rgb(var(--heading-1));
+  }
+  .text-heading-2 {
+    color: rgb(var(--heading-2));
+  }
+  .text-heading-3 {
+    color: rgb(var(--heading-3));
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+}
