@@ -17,8 +17,7 @@ export default function Order() {
   return (
     <main className='flex flex-col h-screen'>
       <ChatBot/>
-      <Basket />
-
+      {/* <Basket /> */}
       <OrderNavbar/>
       <DishBrowser />
     </main>
