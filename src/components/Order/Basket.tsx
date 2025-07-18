@@ -8,7 +8,7 @@ const Basket = () => {
 
     return (
         <>
-            <div className="fixed bottom-4 right-4 p-2 z-20">
+            <div className="fixed bottom-4 right-4 p-2 z-20 drop-shadow-[0_0_8px_rgba(0,0,0,1)]">
                 <button onClick={() => setOpen(o => !o)} className='min-w-max max-w-max min-h-max max-h-none h-auto p-4 bg-body-2 rounded-xl'>
                     <ShoppingBasketIcon size={42} className='dark:invert'/>
                 </button>

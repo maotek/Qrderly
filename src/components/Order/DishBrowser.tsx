@@ -43,7 +43,7 @@ export default function DishBrowser() {
         {categories.map((catData) => {
           const isActive = selected?.category[locale] === catData.category[locale];
           return (
-            <button key={catData.category.en} onClick={() => selectCategory(catData)} className={`flex-none inline-flex items-center justify-center px-4 py-2 rounded-lg shadow text-lg whitespace-nowrap transition ${isActive ? 'bg-primary text-heading-1' : 'bg-body-1 text-heading-1'}`}>
+            <button key={catData.category.en} onClick={() => selectCategory(catData)} className={`flex-none inline-flex items-center justify-center px-4 py-2 rounded-lg shadow text-lg whitespace-nowrap transition text-heading-1 ${isActive ? 'bg-body-3 scale-105 border border-black dark:border-white' : 'bg-body-1 scale-100'}`}>
               {catData.category[locale] ?? catData.category.en}
             </button>
           );
@@ -53,13 +53,13 @@ export default function DishBrowser() {
       {/* Tag filter */}
       {selected && tags.length > 0 && (
         <div className="overflow-x-auto -webkit-overflow-scrolling-touch py-2 px-2 bg-body-1 flex gap-4 pl-4">
-          <button onClick={() => setSelectedTag(null)} className={`flex-none inline-flex items-center justify-center px-3 py-1 rounded-lg shadow text-sm whitespace-nowrap transition ${!selectedTag ? 'bg-primary text-heading-1' : 'bg-body-1 text-heading-1'}`}>
+          <button onClick={() => setSelectedTag(null)} className={`flex-none inline-flex items-center justify-center px-3 py-1 rounded-lg shadow text-sm whitespace-nowrap transition text-heading-1 ${!selectedTag ? 'bg-body-3 scale-105 border border-black dark:border-white' : 'bg-body-2 scale-100'}`}>
             {locale === 'nl' ? 'Alles' : locale === 'en' ? 'All' : '全部'}
           </button>
           {tags.map((tag) => {
             const isActive = selectedTag?.nl === tag.nl;
             return (
-              <button key={tag.en} onClick={() => setSelectedTag(tag)} className={`flex-none inline-flex items-center justify-center px-3 py-1 rounded-lg shadow text-sm whitespace-nowrap transition ${isActive ? 'bg-primary text-heading-1' : 'bg-body-1 text-heading-1'}`}>
+              <button key={tag.en} onClick={() => setSelectedTag(tag)} className={`flex-none inline-flex items-center justify-center px-3 py-1 rounded-lg text-sm whitespace-nowrap transition text-heading-1 ${isActive ? 'bg-body-3 scale-105 border border-black dark:border-white' : 'bg-body-2 scale-100'}`}>
                 {tag[locale] ?? tag.en}
               </button>
             );
