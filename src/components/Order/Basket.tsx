@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from '@heroui/react'
 import { ShoppingBasketIcon } from 'lucide-react';
 import { useState } from 'react'
 
@@ -9,16 +8,16 @@ const Basket = () => {
 
     return (
         <>
-            <div className="fixed bottom-4 right-24 p-2 z-20">
-                <Button onPress={() => setOpen(o => !o)} className='min-w-max p-2 min-h-max bg-body-1'>
-                    <ShoppingBasketIcon size={48} className='min-w-max dark:invert'/>
-                </Button>
+            <div className="fixed bottom-4 right-4 p-2 z-20">
+                <button onClick={() => setOpen(o => !o)} className='min-w-max max-w-max min-h-max max-h-none h-auto p-4 bg-body-2 rounded-xl'>
+                    <ShoppingBasketIcon size={42} className='dark:invert'/>
+                </button>
             </div>
 
             {isOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
                     <div
-                        className="absolute inset-0 opacity-90 bg-body-1"
+                        className="absolute inset-0 opacity-75 bg-body-2"
                         onClick={() => setOpen(false)}
                     />
 

@@ -9,20 +9,20 @@ const ChatBot = () => {
 
     return (
         <>
-            <div className="fixed bottom-4 right-4 p-2 z-20">
-                <Button onPress={() => setOpen(o => !o)} className='bg-body-1 min-w-0 max-w-max min-h-0 h-auto p-2'>
-                    <BotIcon size={48} className='dark:invert min-w-max'/>
-                </Button>
+            <div className="fixed bottom-4 right-26 p-2 z-20">
+                <button onClick={() => setOpen(o => !o)} className='min-w-max max-w-max min-h-max max-h-none h-auto p-4 bg-body-2 rounded-xl'>
+                    <BotIcon size={42} className='dark:invert'/>
+                </button>
             </div>
 
             {isOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
                     <div
-                        className="absolute inset-0 opacity-90 bg-body-1"
+                        className="absolute inset-0 opacity-75 bg-body-2"
                         onClick={() => setOpen(false)}
                     />
 
-                    <div className="relative w-[75vw] h-[75vh] bg-body-1 rounded-lg shadow-lg overflow-auto text-heading-1 p-2">
+                    <div className="relative w-[70vw] h-[70vh] bg-body-1 rounded-lg shadow-lg overflow-auto text-heading-1 p-2">
                         Hello world
                     </div>
                 </div>

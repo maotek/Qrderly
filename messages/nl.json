@@ -1,12 +1,9 @@
 {
   "Page": {
-    "title": "MAOTEK - Makkelijk Bestellen!"
-  },
-  "HomePage": {
     "title": "MAOTEK"
   },
   "Order": {
-    "title": "MAOTEK - NL"
+    "title": "LOGO"
   },
   "locales": {
     "cn": "Chinees",

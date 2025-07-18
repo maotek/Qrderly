@@ -1,12 +1,9 @@
 {
   "Page": {
-    "title": "MAOTEK - Order Easily!"
-  },
-  "HomePage": {
     "title": "MAOTEK"
   },
   "Order": {
-    "title": "MAOTEK - EN"
+    "title": "LOGO"
   },
   "locales": {
     "cn": "Chinese",

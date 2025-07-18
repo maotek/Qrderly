@@ -12,17 +12,17 @@ const OrderNavbar = async () => {
     //     setTimeout(resolve, 1000);
     // })
     return (
-        <header className='bg-body-1 w-full absolute px-6 py-4'>
-            <nav className='flex flex-row justify-between'>
+        <header className='flex bg-body-1 w-full absolute px-4 py-5 h-20'>
+            <nav className='flex flex-1 flex-row justify-between'>
                 <div>
                     <Link href="/order" className="flex flex-row items-center">
-                        <Image className="dark:invert h-[50] w-auto"
+                        <Image className="dark:invert h-[42] w-auto"
                             src={logo}
-                            width={48}
-                            height={48}
+                            width={42}
+                            height={42}
                             alt='Logo'
                         />
-                        <div className='flex items-center pl-3 font-bold text-2xl'>
+                        <div className='flex items-center pl-3 font-bold text-xl'>
                             <h1 className="text-heading-1">
                                 {t('title')}
                             </h1>

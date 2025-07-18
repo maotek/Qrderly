@@ -1,7 +1,7 @@
-import ChatBot from '@/components/ChatBot';
+import ChatBot from '@/components/Order/ChatBot';
 import Basket from '@/components/Order/Basket';
+import DishBrowser from '@/components/Order/DishBrowser';
 import OrderNavbar from '@/components/Order/OrderNavbar';
-import { Menu } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata() {
@@ -15,13 +15,12 @@ export async function generateMetadata() {
 
 export default function Order() {
   return (
-    <>
+    <main className='flex flex-col h-screen'>
       <ChatBot/>
       <Basket />
-      <OrderNavbar />
-      <div className='pt-24 px-4 pb-4 w-full h-screen bg-body-2'>
-          <Menu/>
-      </div>
-    </>
+
+      <OrderNavbar/>
+      <DishBrowser />
+    </main>
   )
 }
