@@ -16,7 +16,7 @@ export function DishCard({ dish, locale }: DishCardProps) {
     const title = dish.name[locale] ?? dish.name.en;
     const description = dish.description[locale] ?? dish.description.en;
     return (
-        <div className="p-4 bg-body-2 rounded-lg shadow text-center text-heading-1 flex flex-col justify-between">
+        <div className="p-4 bg-body-2 rounded-lg shadow text-center text-heading-1 flex flex-col">
             <Image
                 src={Math.random() < 0.5 ? '/assets/hamburger.jpg' : '/assets/hamburger2.jpg'}
                 alt={title}
