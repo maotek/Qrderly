@@ -125,7 +125,7 @@ export default function DishBrowser() {
             <h2 className="text-2xl font-semibold mb-4 text-center text-heading-1">
               {selected.category[locale] ?? selected.category.en}
             </h2>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {filteredDishes.map((dish: DishData) => (
                 <DishCard key={dish.name.en} dish={dish} locale={locale} />
               ))}
