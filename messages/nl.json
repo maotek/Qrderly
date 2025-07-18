@@ -1,13 +1,16 @@
 {
-  "Page": {
-    "title": "MAOTEK"
-  },
   "Order": {
-    "title": "LOGO"
+    "browserTitle": "MAOTEK",
+    "title": "MAOTEK"
   },
   "locales": {
     "cn": "Chinees",
     "en": "Engels",
     "nl": "Nederlands"
+  },
+  "HomePage": {
+    "headline": "Bestel direct je favorieten",
+    "subhead": "Blader door ons menu en plaats je bestelling in enkele seconden",
+    "demo": "DEMO"
   }
 }

@@ -1,13 +1,16 @@
 {
-  "Page": {
-    "title": "MAOTEK"
-  },
   "Order": {
-    "title": "LOGO"
+    "browserTitle": "MAOTEK",
+    "title": "MAOTEK"
   },
   "locales": {
     "cn": "Chinese",
     "en": "English",
     "nl": "Dutch"
+  },
+  "HomePage": {
+    "headline": "Order Your Favorites Instantly",
+    "subhead": "Browse our menu and place your order in seconds",
+    "demo": "DEMO"
   }
 }

@@ -6,10 +6,10 @@ import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata() {
   // This automatically uses the locale resolved in getRequestConfig()
-  const t = await getTranslations('Page');
+  const t = await getTranslations('Order');
 
   return {
-    title: t('title')
+    title: t('browserTitle')
   };
 }
 

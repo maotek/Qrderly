@@ -1,13 +1,16 @@
 {
-  "Page": {
-    "title": "MAOTEK"
-  },
   "Order": {
-    "title": "LOGO"
+    "browserTitle": "MAOTEK",
+    "title": "MAOTEK"
   },
   "locales": {
     "cn": "中文",
     "en": "英语",
     "nl": "荷兰语"
+  },
+  "HomePage": {
+    "headline": "立即订购您喜爱的美食",
+    "subhead": "浏览我们的菜单并在几秒钟内下单",
+    "demo": "DEMO"
   }
 }

@@ -52,7 +52,7 @@ export default function DishBrowser() {
 
       {/* Tag filter */}
       {selected && tags.length > 0 && (
-        <div className="overflow-x-auto -webkit-overflow-scrolling-touch py-2 px-2 bg-body-3 flex gap-4 pl-4">
+        <div className="overflow-x-auto -webkit-overflow-scrolling-touch py-2 px-2 bg-body-1 flex gap-4 pl-4">
           <button onClick={() => setSelectedTag(null)} className={`flex-none inline-flex items-center justify-center px-3 py-1 rounded-lg shadow text-sm whitespace-nowrap transition ${!selectedTag ? 'bg-primary text-heading-1' : 'bg-body-1 text-heading-1'}`}>
             {locale === 'nl' ? 'Alles' : locale === 'en' ? 'All' : '全部'}
           </button>

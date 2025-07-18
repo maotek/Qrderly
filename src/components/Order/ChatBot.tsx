@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from '@heroui/react'
 import { BotIcon } from 'lucide-react';
 import { useState } from 'react'
 
