@@ -41,7 +41,7 @@ export const Options = ({ supportedLocales }: OptionsProps) => {
 
     return (
         <div className='flex flex-row'>
-            <ButtonGroup className='overflow-hidden rounded-3xl border-2 border-black dark:border-white' >
+            <ButtonGroup className='overflow-hidden rounded-xl border-2 border-black dark:border-white' >
                 <Button className='overflow-hidden bg-body-1 min-w-0 border-r-2 border-black dark:border-white' onPress={() => setTheme(theme === "light" ? "dark" : "light")}>
                     <span className='dark:invert' suppressHydrationWarning>
                         {theme === "dark" ? <Sun /> : <Moon />}

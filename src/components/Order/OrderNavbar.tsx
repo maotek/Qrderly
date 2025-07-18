@@ -6,16 +6,16 @@ import { Options } from "./Options";
 import { getTranslations } from "next-intl/server";
 
 
-const OrderHeader = async () => {
+const OrderNavbar = async () => {
     const t = await getTranslations("Order");
     // await new Promise((resolve) => {
-    //     setTimeout(resolve, 500);
+    //     setTimeout(resolve, 1000);
     // })
     return (
-        <header className='bg-body-1 w-full absolute p-2'>
+        <header className='bg-body-1 w-full absolute px-6 py-4'>
             <nav className='flex flex-row justify-between'>
                 <div>
-                    <Link href="/order" className="flex flex-row p-2 items-center">
+                    <Link href="/order" className="flex flex-row items-center">
                         <Image className="dark:invert h-[50] w-auto"
                             src={logo}
                             width={48}
@@ -30,7 +30,7 @@ const OrderHeader = async () => {
                     </Link>
                 </div>
 
-                <div className='flex items-center pr-3'>
+                <div className='flex items-center'>
                     <Options supportedLocales={locales} />
                 </div>
             </nav>
@@ -38,4 +38,4 @@ const OrderHeader = async () => {
     )
 }
 
-export default OrderHeader
+export default OrderNavbar

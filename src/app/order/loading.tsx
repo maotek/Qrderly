@@ -1,11 +1,10 @@
 "use client"
 
-import React from 'react'
 import {Spinner} from "@heroui/react";
 
 const loading = () => {
   return (
-    <Spinner className='w-scren h-screen flex items-center'/>
+    <Spinner className='w-screen h-screen flex items-center'/>
   )
 }
 
