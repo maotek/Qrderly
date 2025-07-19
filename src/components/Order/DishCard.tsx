@@ -18,7 +18,7 @@ export function DishCard({ dish, locale }: DishCardProps) {
     return (
         <div className="p-4 bg-body-2 rounded-lg shadow text-center text-heading-1 flex flex-col">
             <Image
-                src={Math.random() < 0.5 ? '/assets/hamburger.jpg' : '/assets/hamburger2.jpg'}
+                src={'/assets/hamburger.jpg'}
                 alt={title}
                 width={160}
                 height={120}

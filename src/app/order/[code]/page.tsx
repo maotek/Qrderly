@@ -6,9 +6,6 @@ import { Table } from '@/types/types';
 import { CategoryData, fetchCategories } from '@/data/mockData';
 
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL!;
-
-
 export async function generateMetadata() {
   // This automatically uses the locale resolved in getRequestConfig()
   const t = await getTranslations('Order');
@@ -20,7 +17,7 @@ export async function generateMetadata() {
 
 
 async function fetchTable(code: string): Promise<Table> {
-  const res = await fetch(`${BACKEND_URL}/api/tables/`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tables/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

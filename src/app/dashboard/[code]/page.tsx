@@ -1,13 +1,20 @@
 import Login from "@/components/Dashboard/Login";
 import OrderNavbar from "@/components/Order/OrderNavbar";
 import { Restaurant } from "@/types/types";
+import { getTranslations } from "next-intl/server";
 
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL!;
+export async function generateMetadata() {
+  // This automatically uses the locale resolved in getRequestConfig()
+  const t = await getTranslations('Order');
 
+  return {
+    title: t('browserTitle')
+  };
+}
 
 async function fetchRestaurant(code: string): Promise<Restaurant> {
-    const res = await fetch(`${BACKEND_URL}/api/restaurants/`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/restaurants/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -44,8 +51,8 @@ export default async function Page({ params }: PageProps) {
     return (
         <>
             <OrderNavbar restaurant={restaurant} />
-            <div className="flex flex-col h-screen pt-20 bg-body-1 text-heading-1">
-                <Login restaurant={restaurant} />
+            <div className="flex flex-col h-screen pt-20 bg-body-2 text-heading-1">
+                <Login restaurant={restaurant}/>
             </div>
         </>
     )
