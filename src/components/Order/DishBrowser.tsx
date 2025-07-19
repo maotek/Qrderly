@@ -2,27 +2,30 @@
 
 import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
-import { fetchCategories, CategoryData, DishData, Translation } from '@/data/mockData';
+import { CategoryData, DishData, Translation } from '@/data/mockData';
 import Basket from './Basket';
 import { DishCard } from './DishCard';
 
-export default function DishBrowser() {
+
+interface DishBrowserProps {
+  dishData: CategoryData[];
+}
+
+
+export default function DishBrowser({ dishData }: DishBrowserProps) {
   // Set locale as a key type for Translation.
   const locale = useLocale() as keyof Translation;
-  const [categories, setCategories] = useState<CategoryData[]>([]);
   const [selected, setSelected] = useState<CategoryData | null>(null);
   // Allow multiple tags
   const [selectedTags, setSelectedTags] = useState<Translation[]>([]);
 
   useEffect(() => {
-    fetchCategories().then((data) => {
-      setCategories(data);
-      if (data.length > 0) {
-        setSelected(data[0]);
-        setSelectedTags([]);
-      }
-    });
+    if (dishData.length > 0) {
+      setSelected(dishData[0]);
+      setSelectedTags([]);
+    }
   }, []);
+
 
   const selectCategory = (cat: CategoryData) => {
     setSelected((prev) =>
@@ -56,7 +59,7 @@ export default function DishBrowser() {
     <div className="flex flex-col flex-1 pt-20 overflow-hidden">
       {/* Category picker */}
       <div className="overflow-x-auto -webkit-overflow-scrolling-touch py-4 px-2 bg-body-2 flex gap-4 pl-4">
-        {categories.map((catData) => {
+        {dishData.map((catData) => {
           const isActive =
             selected?.category[locale] === catData.category[locale];
           return (
@@ -64,8 +67,8 @@ export default function DishBrowser() {
               key={catData.category.en}
               onClick={() => selectCategory(catData)}
               className={`flex-none inline-flex items-center justify-center px-4 py-2 rounded-lg shadow text-lg whitespace-nowrap transition text-heading-1 ${isActive
-                  ? 'bg-body-3 scale-105 border border-black dark:border-white'
-                  : 'bg-body-1 scale-100'
+                ? 'bg-body-3 scale-105 border border-black dark:border-white'
+                : 'bg-body-1 scale-100'
                 }`}
             >
               {catData.category[locale] ?? catData.category.en}
@@ -80,8 +83,8 @@ export default function DishBrowser() {
           <button
             onClick={() => setSelectedTags([])}
             className={`flex-none inline-flex items-center justify-center px-3 py-1 rounded-lg shadow text-sm whitespace-nowrap transition text-heading-1 ${selectedTags.length === 0
-                ? 'bg-body-3 scale-105 border border-black dark:border-white'
-                : 'bg-body-2 scale-100'
+              ? 'bg-body-3 scale-105 border border-black dark:border-white'
+              : 'bg-body-2 scale-100'
               }`}
           >
             {locale === 'nl' ? 'Alles' : locale === 'en' ? 'All' : '全部'}
@@ -99,8 +102,8 @@ export default function DishBrowser() {
                   )
                 }
                 className={`flex-none inline-flex items-center justify-center px-3 py-1 rounded-lg text-sm whitespace-nowrap transition text-heading-1 ${isActive
-                    ? 'bg-body-3 scale-105 border border-black dark:border-white'
-                    : 'bg-body-2 scale-100'
+                  ? 'bg-body-3 scale-105 border border-black dark:border-white'
+                  : 'bg-body-2 scale-100'
                   }`}
               >
                 {tag[locale] ?? tag.en}
