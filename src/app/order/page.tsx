@@ -21,7 +21,7 @@ export default async function Page() {
   try {
     dishData = await fetchCategories();
   } catch (error: unknown) {
-    return <p className="text-center text-red-500 mt-8 font-bold">{`Failed to fetch restaurant dishes ${code}`}</p>;
+    return <p className="text-center text-red-500 mt-8 font-bold">{`Failed to fetch restaurant dishes`}</p>;
   }
 
 
