@@ -11,6 +11,7 @@
   "HomePage": {
     "headline": "Order Your Favorites Instantly",
     "subhead": "Browse our menu and place your order in seconds",
-    "demo": "DEMO"
+    "orderDemo": "ORDER DEMO",
+    "dashboardDemo": "DASHBOARD DEMO"
   }
 }

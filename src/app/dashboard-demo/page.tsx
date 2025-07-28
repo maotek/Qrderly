@@ -1,0 +1,12 @@
+import OrderNavbar from "@/components/Order/OrderNavbar";
+
+export default async function Page() {
+    return (
+        <>
+            <OrderNavbar name="Dashboard Demo"/>
+            <div className="flex flex-col h-screen pt-20 bg-body-1 text-heading-1">
+                COMING SOON
+            </div>
+        </>
+    )
+}

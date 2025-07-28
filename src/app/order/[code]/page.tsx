@@ -2,7 +2,6 @@ import ChatBot from '@/components/Order/ChatBot';
 import DishBrowser from '@/components/Order/DishBrowser';
 import OrderNavbar from '@/components/Order/OrderNavbar';
 import { getTranslations } from 'next-intl/server';
-import { Table } from '@/types/types';
 import { CategoryData, fetchCategories } from '@/data/mockData';
 
 
@@ -15,9 +14,18 @@ export async function generateMetadata() {
   };
 }
 
+export interface Restaurant {
+  name: string;
+  logo_url?: string | null;
+}
+
+export interface Table {
+  table_number: number;
+  restaurant: Restaurant;
+}
 
 async function fetchTable(code: string): Promise<Table> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tables/`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/table/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -61,7 +69,7 @@ export default async function Page({ params }: PageProps) {
     <main className='flex flex-col h-screen'>
       <ChatBot />
 
-      <OrderNavbar restaurant={table.restaurant} table_number={table.table_number} />
+      <OrderNavbar name={table.restaurant.name} table_number={table.table_number} logo_url={table.restaurant.logo_url}/>
       <DishBrowser dishData={dishData}/>
     </main>
   )

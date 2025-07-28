@@ -1,70 +1,40 @@
 'use client'
 
 import { useState, useEffect, FormEvent } from 'react'
-import Image from 'next/image'
-import { Restaurant } from '@/types/types'
+import { login, logout, initAuth } from "@/app/lib/api";
 
-interface LoginProps {
-  restaurant: Restaurant
-}
-
-interface CurrentUser {
+export interface CurrentUser {
   username: string
-  restaurant_code: string | null
+  first_name: string
+  restaurant_name: string | null
 }
 
-export default function Login({ restaurant }: LoginProps) {
-  const [username, setUsername]     = useState<string>('')
-  const [password, setPassword]     = useState<string>('')
-  const [error, setError]           = useState<string | null>(null)
-  const [loading, setLoading]       = useState<boolean>(false)
-  const [loggedIn, setLoggedIn]     = useState<boolean>(false)
+export default function Login() {
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const [user, setUser] = useState<CurrentUser | null>(null)
   const [initializing, setInitializing] = useState<boolean>(true)
 
-  // ① On mount, check current session
+  // Restore session via JWT on mount
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/me/`, {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then(async res => {
-        if (res.ok) {
-          const data: CurrentUser = await res.json()
-          setUsername(data.username)
-          setLoggedIn(true)
-        }
+    initAuth()
+      .then(u => {
+        if (u) setUser(u)
       })
-      .catch(() => {
-        // ignore network/401
-      })
-      .finally(() => {
-        setInitializing(false)
-      })
+      .catch(() => { })
+      .finally(() => setInitializing(false))
   }, [])
 
-  // ② Login handler
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setLoading(true)
-    setError(null)
-
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login/`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          credentials: 'include',
-          body: JSON.stringify({ username, password }),
-        }
-      )
-
-      if (res.ok) {
-        setLoggedIn(true)
-      } else {
-        const text = await res.text()
-        setError(text || 'Login failed')
-      }
+      const u = await login(username, password)
+      setUser(u)
     } catch (err) {
       setError((err as Error).message)
     } finally {
@@ -72,20 +42,11 @@ export default function Login({ restaurant }: LoginProps) {
     }
   }
 
-  // ③ Logout handler
-  const handleLogout = async () => {
-    await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/logout/`,
-      {
-        method: 'POST',
-        credentials: 'include',
-      }
-    )
-    setLoggedIn(false)
-    setUsername('')
+  const handleLogoutClick = () => {
+    logout()
+    setUser(null)
   }
 
-  // ④ While checking session, show spinner
   if (initializing) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -94,13 +55,18 @@ export default function Login({ restaurant }: LoginProps) {
     )
   }
 
-  // ⑤ If logged in, show welcome + logout
-  if (loggedIn) {
+  if (user) {
     return (
-      <div className="p-6 text-center">
-        <h2 className="text-xl font-semibold">Welcome back, {username}!</h2>
+      <div className="pt-4 text-center">
+        <h2 className="text-xl font-semibold">
+          Welcome back, {user.first_name}!
+        </h2>
+        <p className="mt-2">
+          You’re working at{' '}
+          <span className="font-medium">{user.restaurant_name}</span>.
+        </p>
         <button
-          onClick={handleLogout}
+          onClick={handleLogoutClick}
           className="mt-4 bg-gray-200 text-gray-800 px-4 py-2 rounded"
         >
           Log out
@@ -109,30 +75,10 @@ export default function Login({ restaurant }: LoginProps) {
     )
   }
 
-  // ⑥ Otherwise render the login form
   return (
-    <div className="max-w-md mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">
-        Log in to {restaurant.name}
-      </h1>
-
-      {restaurant.logo_url && (
-        <div className="flex justify-center mb-6">
-          <Image
-            src={restaurant.logo_url}
-            alt={`${restaurant.name} logo`}
-            width={96}
-            height={96}
-            className="object-contain rounded-lg shadow"
-            unoptimized
-          />
-        </div>
-      )}
-
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4 border p-6 rounded-lg shadow"
-      >
+    <div className="flex flex-col gap-2 max-w-md mx-auto h-screen p-4 items-center justify-center">
+      <h1 className="text-2xl font-bold">Log in</h1>
+      <form onSubmit={handleSubmit} className="space-y-4 border-2 p-6 rounded-lg">
         {error && <p className="text-red-500">{error}</p>}
 
         <div>
@@ -145,7 +91,7 @@ export default function Login({ restaurant }: LoginProps) {
             value={username}
             onChange={e => setUsername(e.currentTarget.value)}
             required
-            className="mt-1 block w-full border rounded px-3 py-2"
+            className="mt-1 block w-full border-2 rounded px-3 py-2"
           />
         </div>
 
@@ -159,7 +105,7 @@ export default function Login({ restaurant }: LoginProps) {
             value={password}
             onChange={e => setPassword(e.currentTarget.value)}
             required
-            className="mt-1 block w-full border rounded px-3 py-2"
+            className="mt-1 block w-full border-2 rounded px-3 py-2"
           />
         </div>
 

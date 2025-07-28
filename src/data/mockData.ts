@@ -1,35 +1,35 @@
 /**
  * Data models for menu categories and dishes with translations.
  */
-export interface Translation {
-  nl: string;
-  en: string;
-  cn: string;
-}
+  export interface Translation {
+    nl: string;
+    en: string;
+    cn: string;
+  }
 
-export interface OptionData {
-  name: Translation;
-  price: number;
-}
+  export interface OptionData {
+    name: Translation;
+    price: number;
+  }
 
-export interface DishData {
-  name: Translation;
-  price: number;
-  tags: Translation[];
-  description: Translation;
-  options?: OptionData[];
-}
+  export interface DishData {
+    name: Translation;
+    price: number;
+    tags: Translation[];
+    description: Translation;
+    options?: OptionData[];
+  }
 
-export interface CategoryData {
-  category: Translation;
-  dishes: DishData[];
-}
+  export interface CategoryData {
+    category: Translation;
+    dishes: DishData[];
+  }
 
-/**
- * Mock fetch function to retrieve category data with translations.
- * Replace with real API call as needed.
- */
-export async function fetchCategories(): Promise<CategoryData[]> {
+  /**
+   * Mock fetch function to retrieve category data with translations.
+   * Replace with real API call as needed.
+   */
+  export async function fetchCategories(): Promise<CategoryData[]> {
   return [
     {
       category: { nl: '🍕 Pizza', en: '🍕 Pizza', cn: '🍕 披萨' },

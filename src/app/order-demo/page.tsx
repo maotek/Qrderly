@@ -1,5 +1,4 @@
 import ChatBot from '@/components/Order/ChatBot';
-import Basket from '@/components/Order/Basket';
 import DishBrowser from '@/components/Order/DishBrowser';
 import OrderNavbar from '@/components/Order/OrderNavbar';
 import { getTranslations } from 'next-intl/server';
@@ -29,7 +28,7 @@ export default async function Page() {
     <main className='flex flex-col h-screen'>
       <ChatBot/>
 
-      <OrderNavbar/>
+      <OrderNavbar name="Qrderly Demo"/>
       <DishBrowser dishData={dishData}/>
     </main>
   )
