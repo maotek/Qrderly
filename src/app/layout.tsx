@@ -21,7 +21,7 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <HeroUIProvider>
+          <HeroUIProvider className="h-dvh">
             <NextIntlClientProvider>
               {children}
             </NextIntlClientProvider>

@@ -17,14 +17,14 @@ const OrderNavbar = async ({ table_number = null, logo_url = "/assets/logo.png",
     const t = await getTranslations("Order");
 
     return (
-        <header className='flex bg-body-1 w-full absolute px-4 py-5 h-20'>
+        <header className='flex bg-body-1 w-full absolute px-4 py-5 h-20 z-50'>
             <nav className='flex flex-1 flex-row justify-between'>
-                <div>
+                <div className='flex items-center'>
                     <Link href="/order" className="flex flex-row items-center">
-                        <Image className="h-[42] w-auto rounded"
+                        <Image className="h-[34] w-auto rounded"
                             src={logo_url as string}
-                            width={42}
-                            height={42}
+                            width={34}
+                            height={34}
                             alt='Logo'
                         />
                         <div className='flex flex-row gap-2 items-center pl-3 font-bold text-heading-1'>

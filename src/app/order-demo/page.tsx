@@ -25,11 +25,14 @@ export default async function Page() {
 
 
   return (
-    <main className='flex flex-col h-screen'>
+    <>
+    <OrderNavbar name="Qrderly Demo"/>
+    <main className='flex flex-col h-dvh'>
       <ChatBot/>
 
       <OrderNavbar name="Qrderly Demo"/>
       <DishBrowser dishData={dishData}/>
     </main>
+    </>
   )
 }

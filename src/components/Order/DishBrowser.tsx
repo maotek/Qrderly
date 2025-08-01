@@ -56,9 +56,9 @@ export default function DishBrowser({ dishData }: DishBrowserProps) {
     : [];
 
   return (
-    <div className="flex flex-col flex-1 pt-20 overflow-hidden">
+    <div className="flex flex-col h-full pt-20 overflow-hidden">
       {/* Category picker */}
-      <div className="overflow-x-auto -webkit-overflow-scrolling-touch py-4 px-2 bg-body-2 flex gap-4 pl-4">
+      <div className="overflow-x-auto py-4 px-2 bg-body-2 flex gap-4 pl-4">
         {dishData.map((catData) => {
           const isActive =
             selected?.category[locale] === catData.category[locale];
@@ -79,7 +79,7 @@ export default function DishBrowser({ dishData }: DishBrowserProps) {
 
       {/* Tag filter */}
       {selected && tags.length > 0 && (
-        <div className="overflow-x-auto -webkit-overflow-scrolling-touch py-2 px-2 bg-body-1 flex gap-4 pl-4">
+        <div className="overflow-x-auto py-2 px-2 bg-body-1 flex gap-4 pl-4">
           <button
             onClick={() => setSelectedTags([])}
             className={`flex-none inline-flex items-center justify-center px-3 py-1 rounded-lg shadow text-sm whitespace-nowrap transition text-heading-1 ${selectedTags.length === 0
@@ -114,7 +114,7 @@ export default function DishBrowser({ dishData }: DishBrowserProps) {
       )}
 
       {/* Dishes scrollable list */}
-      <div className="flex-1 px-4 pt-4 bg-body-1 overflow-y-auto pb-20">
+      <div className="flex-1 px-4 pt-4 bg-body-1 overflow-y-auto pb-30">
         {!selected ? (
           <p className="text-center text-gray-500 mt-8">
             {locale === 'nl'
@@ -124,7 +124,7 @@ export default function DishBrowser({ dishData }: DishBrowserProps) {
                 : '选择一个类别以查看菜品…'}
           </p>
         ) : (
-          <section className="mb-8">
+          <section className="mb-0">
             <h2 className="text-2xl font-semibold mb-4 text-center text-heading-1">
               {selected.category[locale] ?? selected.category.en}
             </h2>
